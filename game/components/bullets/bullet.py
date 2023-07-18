@@ -11,7 +11,7 @@ class Bullet(Sprite):
     SPEED = 20
 
 
-    def __init__(self):
+    def __init__(self, spaceship):
         self.image = self.BULLETS[spaceship.type]
         self.rect = self.image.get_rect()
         self.rect.center = spaceship.rect.center
@@ -24,4 +24,4 @@ class Bullet(Sprite):
             bullets.remove(self)
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        screen.blit(self.image, self.rec)
