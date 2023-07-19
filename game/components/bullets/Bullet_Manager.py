@@ -16,6 +16,7 @@ class BulletManager:
                     game.enemy_manager.enemies.remove(enemy)
                     self.bullets.remove(bullet)
                     game.score += 1
+                    game.total_score_player += 1
 
         for bullet in self.enemy_bullets:
             bullet.update(self.enemy_bullets)
@@ -42,7 +43,10 @@ class BulletManager:
             bullet.draw(screen)
 
     def add_bullet(self, bullet):
-        if bullet.owner == 'player' and len(self.bullets) < 3:
+        if bullet.owner == 'player' and len(self.bullets) < 4:
             self.bullets.append(bullet)
         elif bullet.owner == 'enemy' and len(self.enemy_bullets) < 1:
            self.enemy_bullets.append(bullet) 
+
+        elif bullet.owner == 'enemy' and len(self.enemy_bullets) < 1:
+           self.enemy_bullets.append(bullet)

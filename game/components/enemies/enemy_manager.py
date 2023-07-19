@@ -22,10 +22,10 @@ class EnemyManager:
         if enemy_type == 1:
             enemy = Enemy()
         else:
-            speed_x = 5
+            speed_x = 6
             speed_y = 2
             move_x_for = [50, 120]
             enemy = Enemy(enemy_type, speed_x, speed_y, move_x_for)
             
-        if len(self.enemies) < 1:
+        if len(self.enemies) < 2:
             self.enemies.append(enemy)
