@@ -4,7 +4,7 @@ import pygame
 from random import randint
 from pygame.sprite import Sprite
 
-from game.utils.constants import ENEMY_1, ENEMY_2, SHIP_WIDTH, SHIP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT
+from game.utils.constants import ENEMY_1, ENEMY_2, ENEMY_3, ENEMY_4,  SHIP_WIDTH, SHIP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT
 from game.components.bullets.bullet import Bullet
 
 class Enemy(Sprite):
@@ -12,7 +12,7 @@ class Enemy(Sprite):
     SPEED_X = 5
     SPEED_Y = 1
     MOV_X = {0: 'left', 1: 'right'}
-    IMAGE = {1: ENEMY_1, 2: ENEMY_2}
+    IMAGE = {1: ENEMY_1, 2: ENEMY_2, 3: ENEMY_3, 4: ENEMY_4}
     def __init__(self, image_index = 1, speed_x = SPEED_X, speed_y = SPEED_Y, move_x_for = [30, 100]):
         self.image = self.IMAGE[image_index]
         self.image = pygame.transform.scale(self.image, (SHIP_WIDTH, SHIP_HEIGHT))

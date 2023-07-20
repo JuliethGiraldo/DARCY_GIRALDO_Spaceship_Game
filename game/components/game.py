@@ -8,8 +8,11 @@ from game.components.bullets.bullet_manager import BulletManager
 from game.components.menu import Menu
 from game.components.counter import Counter
 from game.components.power_ups.power_up_manager import PowerUpManager
+from pygame import mixer
+
 
 class Game:
+
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -37,19 +40,21 @@ class Game:
                 self.show_menu()
         pygame.display.quit()
         pygame.quit()
+
     def run(self):
         self.reset()
         self.enemy_manager.reset()
-        # Game loop: events - update - draw
         self.playing = True
         while self.playing:
             self.events()
             self.update()
             self.draw()
+
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
+
     def update(self):
         user_input = pygame.key.get_pressed()
         self.player.update(user_input, self)
@@ -79,6 +84,7 @@ class Game:
             self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg - image_height))
             self.y_pos_bg = 0
         self.y_pos_bg += self.game_speed
+
     def show_menu(self):
         self.menu.reset_screen_color(self.screen)
         half_screen_height = SCREEN_HEIGHT // 2
@@ -88,13 +94,15 @@ class Game:
             self.menu.draw(self.screen, 'Press any key to start ...')
         else:
             self.update_highest_score()
-            self.menu.draw(self.screen, 'Game over. Press any key to restart')
+            self.menu.draw(self.screen, 'U_U >_< U_U GAME OVER. Press any key to restart')
             self.menu.draw(self.screen, f'Your score: {self.score.count}', half_screen_width, 350, )
             self.menu.draw(self.screen, f'Highest score: {self.highest_score.count}', half_screen_width, 400, )
             self.menu.draw(self.screen, f'Total deaths: {self.death_count.count}', half_screen_width, 450, )
+
         icon = self.image = pygame.transform.scale(ICON, (80, 120))
         self.screen.blit(icon, (half_screen_width - 50, half_screen_height - 150))
         self.menu.update(self)
+
     def draw_score(self):
         font = pygame.font.Font(FONT_STYLE, 30)
         text = font.render(f'Score: {self.score}', True, (255, 255, 255))
@@ -105,6 +113,7 @@ class Game:
     def update_highest_score(self):
         if self.score.count > self.highest_score.count:
             self.highest_score.set_count(self.score.count)
+
     def reset(self):
         self.bullet_manager.reset()
         self.enemy_manager.reset()

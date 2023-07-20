@@ -2,6 +2,7 @@ import pygame
 
 from random import randint
 
+from game.components.power_ups.heart import Heart
 from game.components.power_ups.shield import Shield
 from game.utils.constants import SPACESHIP_SHIELD
 

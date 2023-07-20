@@ -28,15 +28,15 @@ class BulletManager:
     def draw(self, screen):
         for bullet in self.bullets:
             bullet.draw(screen)
-            
+
         for bullet in self.enemy_bullets:
             bullet.draw(screen)
             
     def add_bullet(self, bullet):
-        if bullet.owner == 'player' and len(self.bullets) < 6:
+        if bullet.owner == 'player' and len(self.bullets) < 8:
             self.bullets.append(bullet)
 
-        elif bullet.owner == 'enemy' and len(self.enemy_bullets) < 1:
+        elif bullet.owner == 'enemy' and len(self.enemy_bullets) < 2:
            self.enemy_bullets.append(bullet)
            
     def reset(self):
