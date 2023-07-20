@@ -1,8 +1,9 @@
 import pygame
-
 from random import randint
 from pygame.sprite import Sprite
+
 from game.utils.constants import SCREEN_HEIGHT
+
 
 class PowerUp(Sprite):
 
@@ -10,7 +11,7 @@ class PowerUp(Sprite):
         self.image = image
         self.type = type
         self.rect = self.image.get_rect()
-        self.rect.x = randint(100, SCREEN_HEIGHT = 100)
+        self.rect.x = randint(100, SCREEN_HEIGHT - 100)
         self.rect.y = 0
         self.start_time = 0
 
@@ -21,4 +22,3 @@ class PowerUp(Sprite):
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
-        

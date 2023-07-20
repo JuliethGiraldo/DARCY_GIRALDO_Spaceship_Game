@@ -58,6 +58,6 @@ class Enemy(Sprite):
             self.movement_x = 'left'
             self.step = 0 
             
-        elif (self.step >= self.move_x_for and self.movement_x == 'left') or (self.rect.x <=10):
+        elif (self.step >= self.move_x_for and self.movement_x == 'left') or (self.rect.x <= 10):
             self.movement_x = 'right'
             self.step = 0 
